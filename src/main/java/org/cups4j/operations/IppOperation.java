@@ -2,14 +2,14 @@ package org.cups4j.operations;
 
 /**
  * Copyright (C) 2009 Harald Weyhing
- * 
+ *
  * This program is free software; you can redistribute it and/or modify it under the terms of the
  * GNU Lesser General Public License as published by the Free Software Foundation; either version 3
  * of the License, or (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
  * even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * 
+ *
  * See the GNU Lesser General Public License for more details. You should have received a copy of
  * the GNU Lesser General Public License along with this program; if not, see
  * <http://www.gnu.org/licenses/>.
@@ -17,16 +17,16 @@ package org.cups4j.operations;
 import ch.ethz.vppserver.ippclient.IppResponse;
 import ch.ethz.vppserver.ippclient.IppResult;
 import ch.ethz.vppserver.ippclient.IppTag;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.ResponseHandler;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.InputStreamEntity;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.util.EntityUtils;
+import cz.msebera.android.httpclient.HttpEntity;
+import cz.msebera.android.httpclient.HttpResponse;
+import cz.msebera.android.httpclient.entity.InputStreamEntity;
+import cz.msebera.android.httpclient.impl.client.HttpClientBuilder;
+import cz.msebera.android.httpclient.client.ClientProtocolException;
+import cz.msebera.android.httpclient.client.HttpClient;
+import cz.msebera.android.httpclient.client.ResponseHandler;
+import cz.msebera.android.httpclient.client.config.RequestConfig;
+import cz.msebera.android.httpclient.client.methods.HttpPost;
+import cz.msebera.android.httpclient.util.EntityUtils;
 import org.cups4j.CupsClient;
 import org.cups4j.ipp.attributes.Attribute;
 import org.slf4j.Logger;
@@ -54,7 +54,7 @@ public abstract class IppOperation {
 
   /**
    * Gets the IPP header
-   * 
+   *
    * @param url
    * @return IPP header
    * @throws UnsupportedEncodingException
@@ -73,7 +73,7 @@ public abstract class IppOperation {
 
   /**
    * Gets the IPP header
-   * 
+   *
    * @param url
    * @param map
    * @return IPP header
@@ -120,12 +120,12 @@ public abstract class IppOperation {
 
   /**
    * Sends a request to the provided URL
-   * 
+   *
    * @param url
    * @param ippBuf
-   * 
+   *
    * @return result
-   * @throws Exception 
+   * @throws Exception
    */
   private IppResult sendRequest(URL url, ByteBuffer ippBuf) throws Exception  {
     IppResult result = sendRequest(url, ippBuf, null);
@@ -137,10 +137,10 @@ public abstract class IppOperation {
 
   /**
    * Sends a request to the provided url
-   * 
+   *
    * @param url
    * @param ippBuf
-   * 
+   *
    * @param documentStream
    * @return result
    * @throws Exception
@@ -214,7 +214,7 @@ public abstract class IppOperation {
         }
       }
     };
-    
+
     byte[] result = client.execute(httpPost, handler);
 
     IppResponse ippResponse = new IppResponse();
@@ -243,7 +243,7 @@ public abstract class IppOperation {
 
   /**
    * Removes the port number in the submitted URL
-   * 
+   *
    * @param url
    * @return url without port number
    */

@@ -1,7 +1,7 @@
 package org.cups4j;
 
 import cups4j.TestCups;
-import org.apache.commons.codec.binary.Base64;
+import android.util.Base64;
 import org.apache.commons.io.FileUtils;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -73,7 +73,7 @@ public final class CupsPrinterTest {
         PrintJob job = new PrintJob.Builder("secret".getBytes()).jobName("testPrintListWithNoUser").build();
         printer.print(job, job);
     }
-    
+
     private PrintJob createPrintJob(File file, String userName) {
         String jobname = generateJobnameFor(file);
         try {
@@ -90,7 +90,7 @@ public final class CupsPrinterTest {
     }
 
     private static String generateJobNameFor(String basename) {
-        byte[] epochTime = Base64.encodeBase64(BigInteger.valueOf(System.currentTimeMillis()).toByteArray());
+        byte[] epochTime = Base64.encode(BigInteger.valueOf(System.currentTimeMillis()).toByteArray(), Base64.NO_WRAP);
         return basename + new String(epochTime).substring(2);
     }
 
